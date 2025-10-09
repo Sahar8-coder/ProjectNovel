@@ -2,6 +2,7 @@
 
 # Определение персонажей игры.
 define e = Character('Эйлин', color="#c8ffc8")
+define a = Character('Дон Симон', color="aabbaa")
 
 # Вместо использования оператора image можете просто
 # складывать все ваши файлы изображений в папку images.
@@ -11,12 +12,21 @@ define e = Character('Эйлин', color="#c8ffc8")
 # Игра начинается здесь:
 label start:
 
-    scene bg room
+    scene bg day
+    with fade
 
-    show eileen happy
+    show sumi frown
 
     e "Вы создали новую игру Ren'Py."
 
     e "Добавьте сюжет, изображения и музыку и отправьте её в мир!"
+    
+    scene bg spring
+    with dissolve
+
+    show sumi smile
+    
+    a "Струячим с Дон Симоном"
+    a "ЫЫЫЫЫЫЫЫЫ"
 
     return
