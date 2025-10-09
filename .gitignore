@@ -1,0 +1,33 @@
+# Directories that Ren'Py changes files in.
+/Novel/NovelPrince/game/saves
+/Novel/NovelPrince/game/cache
+
+# Compiled script files. These are important for saving, and so should
+# be preserved by developer and build systems after the game has been released.
+/Novel/NovelPrince/game/**/*.rpyc
+/Novel/NovelPrince/game/**/*.rpymc
+
+# Files Ren'Py can generate.
+/Novel/NovelPrince/game/**/*.bak
+/Novel/NovelPrince/game/**/*.new
+/Novel/NovelPrince/game/**/*.old
+
+# Error, log, and output files.
+/Novel/NovelPrince/errors.txt
+/Novel/NovelPrince/files.txt
+/Novel/NovelPrince/image_cache.txt
+/Novel/NovelPrince/log.txt
+/Novel/NovelPrince/save_dump.txt
+/Novel/NovelPrince/traceback.txt
+
+# Launcher-generated files.
+/Novel/NovelPrince/dialogue.tab
+/Novel/NovelPrince/dialogue.txt
+/Novel/NovelPrince/strings.json
+
+# Engine
+/RenPySDK
+/key
+/key.pub
+/keyrsa
+/keyrsa.pub
