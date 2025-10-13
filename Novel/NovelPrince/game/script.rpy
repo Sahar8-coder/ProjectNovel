@@ -2,7 +2,6 @@
 
 # Определение персонажей игры.
 define e = Character('Эйлин', color="#c8ffc8")
-define a = Character('Дон Симон', color="aabbaa")
 
 define narrator = Character('Рассказчик', color="#D4B642")
 define prince = Character('Маленький Принц', color="#18AEDE")
@@ -28,9 +27,6 @@ label start:
     with dissolve
 
     show sumi smile
-    
-    a "Струячим с Дон Симоном"
-    a "ЫЫЫЫЫЫЫЫЫ"
 
     jump chapter_1
 
