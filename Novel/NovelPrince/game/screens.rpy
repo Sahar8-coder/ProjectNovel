@@ -3,6 +3,67 @@
 ################################################################################
 
 init offset = -1
+init python:
+    import pygame
+    import math
+
+
+    class TrackCursor(renpy.Displayable):
+
+        def __init__(self, child, paramod, **kwargs):
+
+            super(TrackCursor, self).__init__()
+
+            self.child = renpy.displayable(child)
+            self.x = 0
+            self.y = 0
+            self.actual_x = 0
+            self.actual_y = 0
+
+            self.paramod = paramod
+            self.last_st = 0
+
+
+
+        def render(self, width, height, st, at):
+
+            rv = renpy.Render(width, height)
+            minimum_speed = 0.5
+            maximum_speed = 3
+            speed = 1 + minimum_speed
+            mouse_distance_x = min(maximum_speed, max(minimum_speed, (self.x - self.actual_x)))
+            mouse_distance_y = (self.y - self.actual_y)
+            if self.x is not None:
+                st_change = st - self.last_st
+
+                self.last_st = st
+                self.actual_x = math.floor(self.actual_x + ((self.x - self.actual_x) * speed * (st_change )) * self.paramod)
+                self.actual_y = math.floor(self.actual_y + ((self.y - self.actual_y) * speed * (st_change)) * self.paramod)
+
+
+                if mouse_distance_y <= minimum_speed:
+                    mouse_distance_y = minimum_speed
+                elif mouse_distance_y >= maximum_speed:
+                    mouse_distance_y = maximum_speed
+
+                cr = renpy.render(self.child, width, height, st, at)
+                cw, ch = cr.get_size()
+                rv.blit(cr, (self.actual_x, self.actual_y))
+
+
+
+            renpy.redraw(self, 0)
+            return rv
+
+        def event(self, ev, x, y, st):
+            hover = ev.type == pygame.MOUSEMOTION
+            click = ev.type == pygame.MOUSEBUTTONDOWN
+            mousefocus = pygame.mouse.get_focused()
+            if hover:
+
+                if (x != self.x) or (y != self.y) or click:
+                    self.x = -x /self.paramod
+                    self.y = -y /self.paramod
 
 
 ################################################################################
@@ -135,7 +196,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    background Image("gui/textbox.png", xalign=0.5, yalign=0.9)
 
 style namebox:
     xpos gui.name_xpos
@@ -256,10 +317,26 @@ screen quick_menu():
             textbutton _("Опции") action ShowMenu('preferences')
 
 
+screen ingame_menu():
+    hbox:
+        style_prefix "quick"
+        style "quick_menu_but"
+
+        imagebutton auto "gui/hide_ingame_%s.png":
+            action HideInterface()
+        imagebutton auto "gui/save_ingame_%s.png":
+            action QuickSave()
+            xoffset(10)
+        imagebutton auto "gui/load_ingame_%s.png":
+            action QuickLoad()
+            xoffset(20)
+
+
 ## Данный код гарантирует, что экран быстрого меню будет показан в игре в любое
 ## время, если только игрок не скроет интерфейс.
 init python:
     config.overlay_screens.append("quick_menu")
+    config.overlay_screens.append("ingame_menu")
 
 default quick_menu = True
 
@@ -270,6 +347,10 @@ style quick_button_text is button_text
 style quick_menu:
     xalign 0.5
     yalign 1.0
+
+style quick_menu_but:
+    xalign 0.78
+    yalign 0.75
 
 style quick_button:
     properties gui.button_properties("quick_button")
@@ -299,7 +380,9 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Начать") action Start()
+            imagebutton auto "gui/Начать_%s.png":
+                action Start()
+                hovered Play("sound", "sound/hover_sound.mp3")
 
         else:
 
@@ -307,9 +390,16 @@ screen navigation():
 
             textbutton _("Сохранить") action ShowMenu("save")
 
-        textbutton _("Загрузить") action ShowMenu("load")
-
-        textbutton _("Настройки") action ShowMenu("preferences")
+        imagebutton auto "gui/Загрузить_%s.png":
+                action ShowMenu("load")
+                xoffset(-20)
+                hovered Play("sound", "sound/hover_sound.mp3")
+        # textbutton _("Загрузить") action ShowMenu("load")
+        imagebutton auto "gui/Настройки_%s.png":
+                action ShowMenu("preferences")
+                xoffset(-20)
+                hovered Play("sound", "sound/hover_sound.mp3")
+        # textbutton _("Настройки") action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -319,19 +409,78 @@ screen navigation():
 
             textbutton _("Главное меню") action MainMenu()
 
-        textbutton _("Об игре") action ShowMenu("about")
+        # textbutton _("Об игре") action ShowMenu("about")
 
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+        # if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## Помощь не необходима и не относится к мобильным устройствам.
-            textbutton _("Помощь") action ShowMenu("help")
+            # textbutton _("Помощь") action ShowMenu("help")
 
         if renpy.variant("pc"):
 
             ## Кнопка выхода блокирована в iOS и не нужна на Android и в веб-
             ## версии.
-            textbutton _("Выход") action Quit(confirm=not main_menu)
+            imagebutton auto "gui/Выход_%s.png":
+                action Quit(confirm=not main_menu)
+                xoffset(80)
+                yoffset(50)
+                hovered Play("sound", "sound/hover_sound.mp3")
+            # textbutton _("Выход") action Quit(confirm=not main_menu)
 
+screen navigation_ingame():
+
+    vbox:
+        style_prefix "navigation"
+
+        xpos gui.navigation_ingame_xpos
+        yalign 0.5
+
+        spacing gui.navigation_spacing
+
+        if main_menu:
+
+            imagebutton auto "gui/Начать_%s.png":
+                action Start()
+                hovered Play("sound", "sound/hover_sound.mp3")
+
+        else:
+
+            textbutton _("История") action ShowMenu("history")
+
+            textbutton _("Сохранить") action ShowMenu("save")
+
+        imagebutton auto "gui/Загрузить_%s.png":
+                action ShowMenu("load")
+                hovered Play("sound", "sound/hover_sound.mp3")
+        # textbutton _("Загрузить") action ShowMenu("load")
+        imagebutton auto "gui/Настройки_%s.png":
+                action ShowMenu("preferences")
+                hovered Play("sound", "sound/hover_sound.mp3")
+        # textbutton _("Настройки") action ShowMenu("preferences")
+
+        if _in_replay:
+
+            textbutton _("Завершить повтор") action EndReplay(confirm=True)
+
+        elif not main_menu:
+
+            textbutton _("Главное меню") action MainMenu()
+
+        # textbutton _("Об игре") action ShowMenu("about")
+
+        # if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+
+            ## Помощь не необходима и не относится к мобильным устройствам.
+            # textbutton _("Помощь") action ShowMenu("help")
+
+        if renpy.variant("pc"):
+
+            ## Кнопка выхода блокирована в iOS и не нужна на Android и в веб-
+            ## версии.
+            imagebutton auto "gui/Выход_%s.png":
+                action Quit(confirm=not main_menu)
+                hovered Play("sound", "sound/hover_sound.mp3")
+            # textbutton _("Выход") action Quit(confirm=not main_menu)
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
@@ -356,7 +505,22 @@ screen main_menu():
     ## заменять этот.
     tag menu
 
-    add gui.main_menu_background
+    add TrackCursor("gui/menu_1.png", 8)
+    add TrackCursor("gui/menu_2.png", 10):
+        xzoom 1.05
+        yzoom 1.05
+        xoffset -5
+        yoffset 300
+    add TrackCursor("gui/menu_3.png", 13):
+        xzoom 1.05
+        yzoom 1.05
+        xoffset -5
+        yoffset 120
+    add TrackCursor("gui/menu_4.png", 20):
+        xzoom 1.05
+        yzoom 1.05
+        xoffset -5
+        yoffset 630
 
     ## Эта пустая рамка затеняет главное меню.
     frame:
@@ -474,7 +638,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
                     transclude
 
-    use navigation
+    use navigation_ingame
 
     textbutton _("Вернуться"):
         style "return_button"
@@ -534,7 +698,7 @@ style game_menu_label_text:
     yalign 0.5
 
 style return_button:
-    xpos gui.navigation_xpos
+    xpos gui.navigation_ingame_xpos
     yalign 1.0
     yoffset -45
 
@@ -1304,8 +1468,8 @@ style notify_text:
 
 
 screen nvl(dialogue, items=None):
-
     window:
+
         style "nvl_window"
 
         has vbox:
