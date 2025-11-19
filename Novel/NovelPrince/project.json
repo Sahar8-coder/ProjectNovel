@@ -1,7 +1,11 @@
 {
   "build_update": false,
   "packages": [
+<<<<<<< HEAD
     "win"
+=======
+    "pc"
+>>>>>>> 28456e900c41f395e5217f353a6178c711f0421b
   ],
   "add_from": true,
   "force_recompile": true,

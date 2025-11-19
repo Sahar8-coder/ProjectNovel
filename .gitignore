@@ -24,8 +24,11 @@
 /Novel/NovelPrince/dialogue.tab
 /Novel/NovelPrince/dialogue.txt
 /Novel/NovelPrince/strings.json
+<<<<<<< HEAD
 /Novel/NovelPrince-1.0-dists/
 /Novel/NovelPrince-1.0-dists/NovelPrince-0.1-win.zip 
+=======
+>>>>>>> 28456e900c41f395e5217f353a6178c711f0421b
 
 # Engine
 /RenPySDK/
