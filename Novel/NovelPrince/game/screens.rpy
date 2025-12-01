@@ -374,32 +374,23 @@ screen navigation():
         style_prefix "navigation"
 
         xpos gui.navigation_xpos
-        yalign 0.5
+        yalign 0.48
 
         spacing gui.navigation_spacing
 
-        if main_menu:
-
-            imagebutton auto "gui/Начать_%s.png":
-                action Start()
-                hovered Play("sound", "sound/hover_sound.mp3")
-
-        else:
-
-            textbutton _("История") action ShowMenu("history")
-
-            textbutton _("Сохранить") action ShowMenu("save")
+        imagebutton auto "gui/Начать_%s.png":
+            action Start()
+            xoffset(-10)
+            hovered Play("sound", "sound/hover_sound.mp3")
 
         imagebutton auto "gui/Загрузить_%s.png":
-                action ShowMenu("load")
-                xoffset(-20)
-                hovered Play("sound", "sound/hover_sound.mp3")
-        # textbutton _("Загрузить") action ShowMenu("load")
+            action ShowMenu("load")
+            xoffset(-8)
+            yoffset(12)
+            hovered Play("sound", "sound/hover_sound.mp3")
         imagebutton auto "gui/Настройки_%s.png":
-                action ShowMenu("preferences")
-                xoffset(-20)
-                hovered Play("sound", "sound/hover_sound.mp3")
-        # textbutton _("Настройки") action ShowMenu("preferences")
+            action ShowMenu("preferences")
+            hovered Play("sound", "sound/hover_sound.mp3")
 
         if _in_replay:
 
@@ -409,21 +400,14 @@ screen navigation():
 
             textbutton _("Главное меню") action MainMenu()
 
-        # textbutton _("Об игре") action ShowMenu("about")
-
-        # if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
-
-            ## Помощь не необходима и не относится к мобильным устройствам.
-            # textbutton _("Помощь") action ShowMenu("help")
-
         if renpy.variant("pc"):
 
             ## Кнопка выхода блокирована в iOS и не нужна на Android и в веб-
             ## версии.
             imagebutton auto "gui/Выход_%s.png":
                 action Quit(confirm=not main_menu)
-                xoffset(80)
-                yoffset(50)
+                xoffset(10)
+                yoffset(60)
                 hovered Play("sound", "sound/hover_sound.mp3")
             # textbutton _("Выход") action Quit(confirm=not main_menu)
 
@@ -433,9 +417,9 @@ screen navigation_ingame():
         style_prefix "navigation"
 
         xpos gui.navigation_ingame_xpos
-        yalign 0.5
+        yalign 0.46
 
-        spacing gui.navigation_spacing
+        spacing gui.navigation_ingame_spacing
 
         if main_menu:
 
@@ -444,18 +428,25 @@ screen navigation_ingame():
                 hovered Play("sound", "sound/hover_sound.mp3")
 
         else:
-
-            textbutton _("История") action ShowMenu("history")
-
-            textbutton _("Сохранить") action ShowMenu("save")
-
-        imagebutton auto "gui/Загрузить_%s.png":
-                action ShowMenu("load")
+            imagebutton auto "gui/Истирия_ing_%s.png":
+                xoffset(-10)
+                action ShowMenu("history")
                 hovered Play("sound", "sound/hover_sound.mp3")
+            # textbutton _("История") action ShowMenu("history")
+            imagebutton auto "gui/Сохранить_ing_%s.png":
+                xoffset(-8)
+                action ShowMenu("save")
+                hovered Play("sound", "sound/hover_sound.mp3")
+            # textbutton _("Сохранить") action ShowMenu("save")
+
+        imagebutton auto "gui/Загрузить_ing_%s.png":
+            action ShowMenu("load")
+            hovered Play("sound", "sound/hover_sound.mp3")
         # textbutton _("Загрузить") action ShowMenu("load")
-        imagebutton auto "gui/Настройки_%s.png":
-                action ShowMenu("preferences")
-                hovered Play("sound", "sound/hover_sound.mp3")
+        imagebutton auto "gui/Настройки_ing_%s.png":
+            xoffset(8)
+            action ShowMenu("preferences")
+            hovered Play("sound", "sound/hover_sound.mp3")
         # textbutton _("Настройки") action ShowMenu("preferences")
 
         if _in_replay:
@@ -463,8 +454,11 @@ screen navigation_ingame():
             textbutton _("Завершить повтор") action EndReplay(confirm=True)
 
         elif not main_menu:
-
-            textbutton _("Главное меню") action MainMenu()
+            imagebutton auto "gui/В_меню_ing_%s.png":
+                xoffset(12)
+                action MainMenu()
+                hovered Play("sound", "sound/hover_sound.mp3")
+            # textbutton _("Главное меню") action MainMenu()
 
         # textbutton _("Об игре") action ShowMenu("about")
 
@@ -477,7 +471,9 @@ screen navigation_ingame():
 
             ## Кнопка выхода блокирована в iOS и не нужна на Android и в веб-
             ## версии.
-            imagebutton auto "gui/Выход_%s.png":
+            imagebutton auto "gui/Выход_ing_%s.png":
+                xoffset(22)
+                yoffset(90)
                 action Quit(confirm=not main_menu)
                 hovered Play("sound", "sound/hover_sound.mp3")
             # textbutton _("Выход") action Quit(confirm=not main_menu)
@@ -525,6 +521,15 @@ screen main_menu():
     ## Эта пустая рамка затеняет главное меню.
     frame:
         style "main_menu_frame"
+        add Image("gui/overlay/layer0_screen.png")
+        add Image("gui/overlay/layer1_normal.png")
+        add Image("gui/overlay/layer2_multiply.png"):
+            blend "multiply"
+        add Image("gui/overlay/layer3_screen.png"):
+            blend "add"
+        add Image("gui/overlay/layer4_multiply.png"):
+            blend "multiply"
+        add Image("gui/overlay/layer5_normal.png")
 
     ## Оператор use включает отображение другого экрана в данном. Актуальное
     ## содержание главного меню находится на экране навигации.
@@ -552,7 +557,7 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    # background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -591,7 +596,32 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     frame:
         style "game_menu_outer_frame"
-
+        add TrackCursor("gui/menu_1.png", 8)
+        add TrackCursor("gui/menu_2.png", 10):
+            xzoom 1.05
+            yzoom 1.05
+            xoffset -5
+            yoffset 300
+        add TrackCursor("gui/menu_3.png", 13):
+            xzoom 1.05
+            yzoom 1.05
+            xoffset -5
+            yoffset 120
+        add TrackCursor("gui/menu_4.png", 20):
+            xzoom 1.05
+            yzoom 1.05
+            xoffset -5
+            yoffset 630
+        add Image("gui/overlay/layer0_screen.png")
+        add Image("gui/overlay/layer1_normal.png")
+        add Image("gui/overlay/layer1_multiply_ingame.png"):
+            blend "multiply"
+        add Image("gui/overlay/layer2_multiply_ingame.png"):
+            blend "multiply"
+        add Image("gui/overlay/layer3_screen.png"):
+            blend "add"
+        add Image("gui/overlay/layer4_multiply_ingame.png"):
+            blend "multiply"
         hbox:
 
             ## Резервирует пространство для навигации.
@@ -639,13 +669,12 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
                     transclude
 
     use navigation_ingame
+    #textbutton _("Вернуться"):
+    #    style "return_button"
 
-    textbutton _("Вернуться"):
-        style "return_button"
+    #    action Return()
 
-        action Return()
-
-    label title
+    # label title
 
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
@@ -666,9 +695,9 @@ style return_button_text is navigation_button_text
 
 style game_menu_outer_frame:
     bottom_padding 45
-    top_padding 180
+    # top_padding 180
 
-    background "gui/overlay/game_menu.png"
+    # background "gui/overlay/game_menu.png"
 
 style game_menu_navigation_frame:
     xsize 420

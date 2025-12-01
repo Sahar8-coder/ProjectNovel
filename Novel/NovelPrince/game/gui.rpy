@@ -253,8 +253,8 @@ define gui.file_slot_rows = 2
 
 ## Местоположение левого края навигационных кнопок по отношению к левому краю
 ## экрана.
-define gui.navigation_xpos = 300
-define gui.navigation_ingame_xpos = 60
+define gui.navigation_xpos = 330
+define gui.navigation_ingame_xpos = 120
 
 ## Вертикальная позиция индикатора пропуска.
 define gui.skip_ypos = 15
@@ -266,7 +266,8 @@ define gui.notify_ypos = 68
 define gui.choice_spacing = 33
 
 ## Кнопки в секции навигации главного и игрового меню.
-define gui.navigation_spacing = 6
+define gui.navigation_spacing = -45
+define gui.navigation_ingame_spacing = -55
 
 ## Контролирует интервал между настройками.
 define gui.pref_spacing = 15
