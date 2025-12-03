@@ -15,7 +15,7 @@ define nvlnarrator = nvl_narrator
 # Игра начинается здесь:
 label start:
 
-    jump chapter_8
+    jump chapter_1
 
     return
 
