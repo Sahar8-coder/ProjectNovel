@@ -793,7 +793,7 @@ screen load():
 
 screen file_slots(title):
 
-    default page_name_value = FilePageNameInputValue(pattern=_("{} страница"), auto=_("Автосохранения"), quick=_("Быстрые сохранения"))
+    default page_name_value = FilePageNameInputValue(pattern=_("Выберите слот"), auto=_("Автосохранения"), quick=_("Быстрые сохранения"))
 
     use game_menu(title):
 
@@ -805,16 +805,10 @@ screen file_slots(title):
 
             ## Номер страницы, который может быть изменён посредством клика на
             ## кнопку.
-            button:
-                style "page_label"
-
-                key_events True
+            text title:
+                style "page_label_text"
                 xalign 0.5
-                action page_name_value.Toggle()
-
-                input:
-                    style "page_label_text"
-                    value page_name_value
+                yalign 0.1
 
             ## Таблица слотов.
             grid gui.file_slot_cols gui.file_slot_rows:
@@ -929,19 +923,29 @@ screen preferences():
     use game_menu(_("Настройки"), scroll="viewport"):
 
         vbox:
+            spacing 40
+            xalign 0.5
 
             hbox:
-                box_wrap True
+                xfill True
+                spacing 200
+                ##box_wrap True
 
                 if renpy.variant("pc") or renpy.variant("web"):
 
                     vbox:
+                        xalign 1.0
+                        spacing 10
+
                         style_prefix "radio"
                         label _("Режим экрана")
                         textbutton _("Оконный") action Preference("display", "window")
                         textbutton _("Полный") action Preference("display", "fullscreen")
 
                 vbox:
+                    xalign 0.0
+                    spacing 10
+
                     style_prefix "check"
                     label _("Пропуск")
                     textbutton _("Всего текста") action Preference("skip", "toggle")
@@ -950,37 +954,44 @@ screen preferences():
 
                 ## Дополнительные vbox'ы типа "radio_pref" или "check_pref"
                 ## могут быть добавлены сюда для добавления новых настроек.
-
+                # Отступ
             null height (4 * gui.pref_spacing)
 
             hbox:
+                spacing 200
+                xfill True
+
                 style_prefix "slider"
-                box_wrap True
+                ##box_wrap True
 
                 vbox:
+                    xalign 1.0
+                    spacing 15
 
                     label _("Скорость текста")
 
-                    bar value Preference("text speed")
+                    bar value Preference("text speed") style "slider"
 
                     label _("Скорость авточтения")
 
-                    bar value Preference("auto-forward time")
+                    bar value Preference("auto-forward time") style "slider"
 
                 vbox:
+                    xalign 0.0
+                    spacing 15
 
                     if config.has_music:
                         label _("Громкость музыки")
 
                         hbox:
-                            bar value Preference("music volume")
+                            bar value Preference("music volume") style "slider"
 
                     if config.has_sound:
 
                         label _("Громкость звуков")
 
                         hbox:
-                            bar value Preference("sound volume")
+                            bar value Preference("sound volume") style "slider"
 
                             if config.sample_sound:
                                 textbutton _("Тест") action Play("sound", config.sample_sound)
@@ -990,7 +1001,7 @@ screen preferences():
                         label _("Громкость голоса")
 
                         hbox:
-                            bar value Preference("voice volume")
+                            bar value Preference("voice volume") style "slider"
 
                             if config.sample_voice:
                                 textbutton _("Тест") action Play("voice", config.sample_voice)
@@ -1093,29 +1104,50 @@ screen history():
 
         style_prefix "history"
 
-        for h in _history_list:
+        vbox:
+            spacing 20
+            xfill True
 
-            window:
+            # Заголовок
+            text "История диалогов":
+                size 80
+                xalign 0.5
+                yalign 0.5
 
-                ## Это всё правильно уравняет, если history_height будет
-                ## установлен на None.
-                has fixed:
-                    yfit True
+            for h in _history_list:
 
-                if h.who:
+                window:
 
-                    label h.who:
-                        style "history_name"
+                    ## Это всё правильно уравняет, если history_height будет
+                    ## установлен на None.
+                    has vbox:
+                        spacing 2
+
+                    ##has fixed:
+                    ##    yfit True
+
+                    if h.who:
+
+                        text h.who: ##Поменял label на text
+                            ##style "history_name"
+                            size 32
+                            bold True
+                            xalign 0.0 
+                            ##substitute False
+
+                            ## Берёт цвет из who параметра персонажа, если он
+                            ## установлен.
+                            if "color" in h.who_args:
+                                color h.who_args["color"]
+                            else:
+                                color "#ffffff"
+
+                    $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
+                    text what:
                         substitute False
-
-                        ## Берёт цвет из who параметра персонажа, если он
-                        ## установлен.
-                        if "color" in h.who_args:
-                            text_color h.who_args["color"]
-
-                $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
-                text what:
-                    substitute False
+                        size 26
+                        color gui.text_color                # стандартный
+                        xalign 0.0
 
         if not _history_list:
             label _("История диалогов пуста.")

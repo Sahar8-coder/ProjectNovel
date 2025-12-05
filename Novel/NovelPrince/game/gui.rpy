@@ -26,10 +26,10 @@ define config.check_conflicting_properties = True
 ## Цвета текста в интерфейсе.
 
 ## Акцентный цвет используется в заголовках и подчёркнутых текстах.
-define gui.accent_color = '#9d5719'
+define gui.accent_color = '#ffb6c1'
 
 ## Цвет, используемый в текстовой кнопке, когда она не выбрана и не наведена.
-define gui.idle_color = '#9d5719'
+define gui.idle_color = '#ffb6c1'
 
 ## Small_color используется в маленьком тексте, который должен быть ярче/
 ## темнее, для того, чтобы выделяться.
@@ -52,8 +52,8 @@ define gui.muted_color = '#003d51'
 define gui.hover_muted_color = '#005b7a'
 
 ## Цвета, используемые в тексте диалогов и выборов.
-define gui.text_color = '#9d5719'
-define gui.interface_text_color = '#9d5719'
+define gui.text_color = '#ffffff'
+define gui.interface_text_color = '#ffffff'
 
 
 ## Шрифты и их размеры #########################################################
@@ -412,7 +412,30 @@ define gui.nvl_thought_xalign = 0.0
 define gui.nvl_button_xpos = 675
 define gui.nvl_button_xalign = 0.0
 
+style slider_bar:
+    xysize (300, 6)
+    background "#555"
 
+style slider_thumb:
+    xysize (24, 24)
+    background "#FFF"
+
+style slider_left_bar:
+    background "#66CCFF"        # цвет активной части
+    xsize 200                   # можно менять
+    ysize 8
+
+# Неактивная часть (справа)
+style slider_right_bar:
+    background "#333333"        # цвет неактивной части
+    xsize 200
+    ysize 8
+
+# Бегунок (кружочек)
+style slider_thumb:
+    background "#FFFFFF"
+    xsize 20
+    ysize 20
 ## Локализация #################################################################
 
 ## Эта настройка контролирует доступ к разрыву линий. Стандартная настройка
