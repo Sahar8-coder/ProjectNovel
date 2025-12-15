@@ -6,6 +6,10 @@ define e = Character('Эйлин', color="#c8ffc8", what_prefix="\"", what_suffi
 define narratorm = Character('Рассказчик', color="#D4B642", what_prefix="\"", what_suffix="\"")
 define prince = Character('Маленький Принц', color="#18AEDE", what_prefix="\"", what_suffix="\"")
 define rose = Character('Роза', color="#AB274F", what_prefix="\"", what_suffix="\"")
+define busyman = Character('Деловой человек', color="#19a70c", what_prefix="\"", what_suffix="\"")
+define lamper = Character('Фонарщик', color="#9b0fbe", what_prefix="\"", what_suffix="\"")
+define oldman = Character('Старик', color="#0c09c0", what_prefix="\"", what_suffix="\"")
+
 define nvlnarrator = nvl_narrator
 
 # Вместо использования оператора image можете просто
@@ -855,5 +859,596 @@ label chapter_9:
     "Она не желала, чтобы Маленький Принц видел её слёзы. Она была очень гордым цветком…"
 
     #jump chapter_10
+    jump chapter_13
+
+    return
+
+label chapter_13:
+    # код Makam
+    # Глава 13
+
+    # масштабирование спрайта для нормального полного отображения.
+    transform scaling_center:
+        zoom 0.7
+        yalign 1.0
+        xalign 0.5
+    
+    scene planet mp5 with fade
+
+    "Четвертая планета принадлежала деловому человеку."
+
+    scene lamp house1 with dissolve
+    "Он был так занят, что при появлении Маленького принца даже головы не поднял."
+
+    show prince smile2 at scaling_center
+    prince "Добрый день. Ваша сигарета погасла."
+
+    show prince smile at scaling_center
+    busyman "Три да два — пять. Пять да семь — двенадцать."
+
+    scene desert day with dissolve
+    show prince confused at scaling_center
+    busyman "Двенадцать да три — пятнадцать. Добрый день."
+    busyman "Пятнадцать да семь — двадцать два. Двадцать два да шесть — двадцать восемь."
+
+    scene planet mp5 with dissolve
+    show prince think at scaling_center
+    busyman "Некогда спичкой чиркнуть. Двадцать шесть да пять — тридцать один. Уф!"
+
+    scene star sky1 with dissolve
+    show prince smile at scaling_center
+    busyman "Итого, стало быть, пятьсот один миллион шестьсот двадцать две тысячи семьсот тридцать один."
+    show prince smile2 at scaling_center
+    prince "Пятьсот миллионов чего?"
+    show prince smile at scaling_center
+
+    busyman "А?"
+
+    scene geographer office with dissolve
+    show prince think2 at scaling_center
+    busyman "Ты еще здесь? Пятьсот миллионов..."
+
+    scene lamp house1 with dissolve
+    show prince confused at scaling_center
+    busyman "Уж не знаю чего..."
+
+    scene busy man office with dissolve
+    show prince smile at scaling_center
+    busyman "У меня столько работы! Я человек серьезный, мне не до болтовни!"
+
+    scene lamp house1 with fade
+    show prince smile at scaling_center
+    busyman "Два да пять — семь..."
+
+    scene desert day with dissolve
+    show prince smile2 at scaling_center
+    prince "Пятьсот миллионов чего?"
+    show prince smile at scaling_center
+
+    "Cпросив о чем-нибудь, он не отступался, пока не получал ответа."
+
+    scene drunkard planet1 with dissolve
+    show prince smile at scaling_center
+    "Деловой человек поднял голову."
+    busyman "Уже пятьдесят четыре года я живу на этой планете, и за все время мне мешали только три раза."
+
+    scene planet mp3 with dissolve
+    show prince confused at scaling_center
+    busyman "В первый раз, двадцать два года тому назад, ко мне откуда-то залетел майский жук. Он поднял ужасный шум, и я тогда сделал четыре ошибки в сложении."
+
+    scene busy man office with dissolve
+    show prince confused at scaling_center
+
+    busyman "Во второй раз, одиннадцать лет тому назад, у меня был приступ ревматизма. От сидячего образа жизни. Мне разгуливать некогда."
+
+    busyman "Я человек серьезный. Третий раз..."
+    
+    busyman "вот он! Итак, стало быть, пятьсот миллионов."
+
+    scene star sky1 with dissolve
+    show prince speak at scaling_center
+    prince "Миллионов чего?"
+
+    scene lamp house1 with dissolve
+    show prince confused at scaling_center
+    "Деловой человек понял, что надо ответить, а то не будет ему покоя."
+    busyman "Пятьсот миллионов этих маленьких штучек, которые иногда видны в воздухе."
+
+    show prince speak at scaling_center
+    prince "Это что же, мухи?"
+    busyman "Да нет же, такие маленькие, блестящие."
+
+    scene geographer office with dissolve
+    show prince smile2 at scaling_center
+    prince "Пчелы?"
+    busyman "Да нет же."
+
+    scene moon cosmos with dissolve
+    show prince confused at scaling_center
+    busyman "Такие маленькие, золотые, всякий лентяй как посмотрит на них, так и размечтается. А я человек серьезный."
+    
+    scene planet mp5 with dissolve
+    show prince speak at scaling_center
+    busyman "Мне мечтать некогда."
+    prince "А, звезды?"
+
+    scene moon cosmos with dissolve
+    show prince confused at scaling_center
+    busyman "Вот-вот. Звезды."
+
+    scene drunkard planet1 with dissolve
+    show prince speak at scaling_center
+    prince "Пятьсот миллионов звезд? Что же ты с ними со всеми делаешь?"
+    busyman "Пятьсот один миллион шестьсот двадцать две тысячи семьсот тридцать одна."
+
+    show prince confused at scaling_center
+    busyman "Я человек серьезный, я люблю точность."
+    prince "Что же ты делаешь со всеми этими звездами?"
+    busyman "Что делаю?"
+
+    scene busy man office with dissolve
+    show prince confused at scaling_center
+    prince "Да."
+    busyman "Ничего не делаю. Я ими владею."
+
+    scene moon cosmos with dissolve
+    show prince inspired at scaling_center
+    prince "Владеешь звездами?"
+    busyman "Да."
+
+    scene lamp house1 with dissolve
+    show prince speak at scaling_center
+    prince "Но я уже видел короля, который..."
+
+    scene busy man office with dissolve
+    show prince confused at scaling_center
+    busyman "Короли ничем не владеют. Они только царствуют. Это совсем не одно и то же."
+
+    scene lamp house1 with dissolve
+    show prince speak at scaling_center
+    prince "А для чего тебе владеть звездами?"
+    busyman "Чтобы быть богатым."
+
+    scene busy man office with dissolve
+    show prince confused at scaling_center
+    prince "А для чего быть богатым?"
+    busyman "Чтобы покупать еще новые звезды, если их кто-нибудь откроет."
+
+    scene drunkard planet1 with dissolve
+    show prince speak at scaling_center
+    "Он рассуждает, почти как тот пьяница, — подумал Маленький принц."
+    prince "А как можно владеть звездами?"
+    busyman "Звезды чьи?"
+
+    scene geographer office with dissolve
+    show prince speak at scaling_center
+    prince "Не знаю. Ничьи."
+
+    scene planet mp3 with dissolve
+    show prince inspired at scaling_center
+    busyman "Значит, мои, потому что я первый до этого додумался."
+    prince "И этого довольно?"
+    busyman "Ну конечно."
+
+    scene geographer office with dissolve
+    show prince inspired at scaling_center
+    busyman "Если ты найдешь алмаз, у которого нет хозяина, — значит, он твой. Если ты найдешь остров, у которого нет хозяина, — он твой."
+
+    scene planet mp5 with dissolve
+    show prince think at scaling_center
+    busyman "Если тебе первому придет в голову какая-нибудь идея, ты берешь на нее патент: она твоя. Я владею звездами, потому что до меня никто не догадался ими завладеть."
+    prince "Вот это верно."
+
+    scene lamp house1 with dissolve
+    show prince smile2 at scaling_center
+    prince "А что же ты с ними делаешь?"
+    busyman "Распоряжаюсь ими. Считаю их и пересчитываю."
+
+    scene star sky1 with dissolve
+    show prince smile at scaling_center
+    busyman "Это очень трудно. Но я человек серьезный."
+
+    scene moon cosmos with dissolve
+    show prince speak at scaling_center
+    "Однако Маленькому принцу этого было мало."
+    prince "Если у меня есть шелковый платок, я могу повязать его вокруг шеи и унести с собой, — сказал он. — Если у меня есть цветок, я могу его сорвать и унести с собой."
+
+    scene geographer office with dissolve
+    show prince speak at scaling_center
+    prince "А ты ведь не можешь забрать звезды!"
+    busyman "Нет, но я могу положить их в банк."
+
+    scene drunkard planet1 with dissolve
+    show prince confused at scaling_center
+    prince "Как это?"
+    busyman "А так: пишу на бумажке, сколько у меня звезд."
+
+    scene planet mp2 with dissolve
+    show prince confused at scaling_center
+    busyman "Потом кладу эту бумажку в ящик и запираю его на ключ."
+    prince "И все?"
+    busyman "Этого довольно."
+
+    scene drunkard planet1 with dissolve
+    show prince smile2 at scaling_center
+    "Забавно! — подумал Маленький принц."
+
+    scene busy man office with dissolve
+    show prince inspired at scaling_center
+    "И даже поэтично. Но не так уж это серьезно."
+    "Что серьезно, а что несерьезно — это Маленький принц понимал по-своему, совсем не так, как взрослые."
+
+    scene planet mp4 with dissolve
+    show prince smile2 at scaling_center
+    prince "У меня есть цветок, и я каждое утро его поливаю. У меня есть три вулкана, я каждую неделю их прочищаю."
+
+    scene moon cosmos with dissolve
+    show prince smile2 at scaling_center
+    prince "Все три прочищаю, и потухший тоже. Мало ли что может случиться. И моим вулканам, и моему цветку полезно, что я ими владею."
+
+    scene drunkard planet1 with dissolve
+    show prince speak at scaling_center
+    "Забавно! — подумал Маленький принц."
+
+    scene star sky1 with dissolve
+    show prince smile at scaling_center
+    "Деловой человек открыл было рот, но так и не нашелся что ответить, и Маленький принц отправился дальше."
+    prince "Нет, взрослые и правда поразительный народ, — простодушно говорил он себе, продолжая путь."
+
+    jump chapter_14
+
+    return
+
+label chapter_14:
+    # код Makam
+    # Глава 14
+
+    # масштабирование спрайта для нормального полного отображения.
+    transform scaling_center:
+        zoom 0.7
+        yalign 1.0
+        xalign 0.5
+    
+    scene geographer office with fade
+    "Пятая планета была очень занятная. Она оказалась меньше всех."
+
+    "На ней только и помещалось что фонарь да фонарщик."
+    "Маленький принц никак не мог понять, для чего на крохотной, затерявшейся в небе планетке, где нет ни домов, ни жителей, нужны фонарь и фонарщик. Но он подумал:"
+    show prince think at scaling_center
+    "Может быть, этот человек и нелеп."
+
+    scene drunkard planet1 with dissolve
+    show prince think at scaling_center
+    "Но он не так нелеп, как король, честолюбец, делец и пьяница. В его работе все-таки есть смысл. Когда он зажигает свой фонарь — как будто рождается еще одна звезда или цветок."
+
+    scene busy man office with dissolve
+    show prince think at scaling_center
+    "А когда он гасит фонарь — как будто звезда или цветок засыпают. Прекрасное занятие. Это по-настоящему полезно, потому что красиво."
+    
+    scene geographer office with fade
+    "И, поравнявшись с этой планеткой, он почтительно поклонился фонарщику."
+    show prince smile2 at scaling_center
+    prince "Добрый день."
+
+    scene planet mp2 with dissolve
+    show prince smile2 at scaling_center
+    prince"Почему ты сейчас погасил фонарь?"
+    lamper "Такой уговор. Добрый день."
+
+    scene geographer office with dissolve
+    show prince speak at scaling_center
+    prince "А что это за уговор?"
+    lamper "Гасить фонарь. Добрый вечер."
+
+    scene planet mp5 with dissolve
+    show prince confused at scaling_center
+    "И он снова засветил фонарь."
+    prince "Зачем же ты опять его зажег?"
+
+    lamper "Такой уговор"
+    prince "Не понимаю"
+
+    scene lamp house1 with dissolve
+    show prince confused at scaling_center
+    lamper "И понимать нечего. Уговор есть уговор."
+
+    scene drunkard planet1 with dissolve
+    show prince confused at scaling_center
+    lamper "Добрый день."
+    "И погасил фонарь."
+    "Потом красным клетчатым платком утер пот со лба и сказал:"
+    lamper "Тяжкое у меня ремесло."
+
+    lamper "Когда-то это имело смысл. Я гасил фонарь по утрам, а вечером опять зажигал. У меня оставался день, чтобы отдохнуть, и ночь, чтобы выспаться..."
+
+    scene geographer office with dissolve
+    show prince speak at scaling_center
+    prince "А потом уговор переменился?"
+    lamper "Уговор не менялся, в том-то и беда!"
+
+    lamper "Моя планета год от года вращается все быстрее, а уговор остается прежний."
+    prince "И как же теперь?"
+
+    scene desert day with dissolve
+    show prince confused at scaling_center
+    lamper "Да вот так. Планета делает полный оборот за одну минуту, и у меня нет ни секунды передышки. Каждую минуту я гашу фонарь и опять его зажигаю."
+
+    scene star sky1 with dissolve
+    show prince speak at scaling_center
+    prince "Вот забавно! Значит, у тебя день длится всего одну минуту!"
+    lamper "Ничего тут нет забавного."
+
+    scene drunkard planet1 with dissolve
+    show prince speak at scaling_center
+    lamper "Мы с тобой разговариваем уже целый месяц."
+    prince "Целый месяц?!"
+
+    scene lamp house1 with dissolve
+    show prince speak at scaling_center
+    lamper "Ну да. Тридцать минут."
+
+    show prince inspired at scaling_center
+    lamper "Тридцать дней. Добрый вечер!"
+
+    scene moon cosmos with dissolve
+    show prince inspired at scaling_center
+    "И он опять засветил фонарь."
+    "Маленький принц смотрел на фонарщика, и ему все больше нравился этот человек, который был так верен своему слову."
+    "Маленький принц вспомнил, как он когда-то переставлял стул с места на место, чтобы лишний раз поглядеть на закат."
+
+    scene planet mp2 with dissolve
+    show prince smile2 at scaling_center
+    "И ему захотелось помочь другу."
+    prince "Послушай."
+
+    scene busy man office with dissolve
+    show prince smile2 at scaling_center
+    prince "Я знаю средство: ты можешь отдыхать когда только захочешь..."
+
+    scene lamp house1 with dissolve
+    show prince smile at scaling_center
+    lamper "Мне все время хочется отдыхать."
+    "Ведь можно быть верным слову и все-таки ленивым."
+
+    scene busy man office with dissolve
+    show prince smile2 at scaling_center
+    prince "Твоя планетка такая крохотная, ты можешь обойти ее в три шага. И просто нужно идти с такой скоростью, чтобы все время оставаться на солнце."
+
+    prince "Когда тебе захочется отдохнуть, ты просто все иди, иди..."
+
+    scene desert day with dissolve
+    show prince speak at scaling_center
+    prince "И день будет тянуться столько времени, сколько ты пожелаешь."
+    lamper "Ну, от этого мне мало толку. Больше всего на свете я люблю спать."
+
+    scene moon cosmos with dissolve
+    show prince confused at scaling_center
+    prince "Тогда плохо твое дело."
+    lamper "Плохо мое дело."
+
+    scene lamp house1 with dissolve
+    show prince sad at scaling_center
+    lamper "Добрый день."
+    "И погасил фонарь."
+
+    show prince think2 at scaling_center
+    "«Вот человек, — сказал себе Маленький принц, продолжая путь, — вот человек, которого все стали бы презирать — и король, и честолюбец, и пьяница, и делец." 
+    "А между тем из них всех он один, по-моему, не смешон. Может быть, потому, что он думает не только о себе»"
+
+    scene busy man office with dissolve
+    show prince lonely at scaling_center
+    "Маленький принц вздохнул."
+    "«Вот бы с кем подружиться, — подумал он еще. — Но его планетка уж очень крохотная."
+
+    "Там нет места для двоих...»"
+    "Он не смел себе признаться в том, что больше всего жалеет об этой чудесной планетке еще по одной причине: за двадцать четыре часа на ней можно любоваться закатом тысячу четыреста сорок раз!"
+
+    jump chapter_15
+
+    return
+
+label chapter_15:
+    # код Makam
+    # Глава 15
+
+    # масштабирование спрайта для нормального полного отображения.
+    transform scaling_center:
+        zoom 0.7
+        yalign 1.0
+        xalign 0.5
+    
+    scene star sky1 with fade
+    "Шестая планета была в десять раз больше предыдущей. На ней жил старик, который писал толстенные книги."
+
+    scene moon cosmos with dissolve
+    show prince smile at scaling_center
+    oldman "Смотрите-ка! Вот прибыл путешественник!"
+
+    "воскликнул он, заметив Маленького принца."
+
+    scene drunkard planet1 with dissolve
+    show prince smile at scaling_center
+    "Маленький принц сел на стол, чтобы отдышаться. Он уже столько странствовал!"
+    oldman "Откуда ты?"
+
+    scene lamp house1 with dissolve
+    show prince speak at scaling_center
+    prince "Что это за огромная книга?"
+    
+    scene star sky1 with dissolve
+    show prince speak at scaling_center
+    prince "Что вы здесь делаете?"
+    oldman "Я географ."
+
+    scene busy man office with dissolve
+    show prince smile2 at scaling_center
+    prince "А что такое географ?"
+    oldman "Это ученый, который знает, где находятся моря, реки, города, горы и пустыни."
+    prince "Как интересно!"
+
+    scene lamp house1 with dissolve
+    show prince smile2 at scaling_center
+    prince "Вот это настоящее дело!"
+
+    scene planet mp2 with dissolve
+    show prince inspired at scaling_center
+    "И он окинул взглядом планету географа. Никогда еще он не видал такой величественной планеты."
+   
+    prince "Ваша планета очень красивая. А океаны у вас есть?"
+    oldman "Этого я не знаю"
+    
+    show prince confused at scaling_center
+    prince "О-о..."
+
+    scene busy man office with dissolve
+    show prince think2 at scaling_center
+    prince "А горы есть?"
+
+    oldman "Не знаю."
+    show prince speak at scaling_center
+    prince "А города, реки, пустыни?"
+    oldman "И этого я тоже не знаю."
+
+    scene desert morning4 with dissolve
+    show prince confused at scaling_center
+    prince "Но ведь вы географ!"
+    oldman "Вот именно. Я географ, а не путешественник."
+
+    scene lamp house1 with dissolve
+    oldman "Мне ужасно не хватает путешественников. Ведь не географы ведут счет городам, рекам, горам, морям, океанам и пустыням."
+
+    scene moon cosmos with dissolve
+    show prince smile at scaling_center
+    oldman "Географ — слишком важное лицо, ему некогда разгуливать. Он не выходит из своего кабинета."
+
+    scene geographer office with dissolve
+    show prince speak at scaling_center
+    oldman "Но он принимает у себя путешественников и записывает их рассказы. И если кто-нибудь из них расскажет что-нибудь интересное, географ наводит справки и проверяет, порядочный ли человек этот путешественник."
+    prince "А зачем?"
+
+    scene drunkard planet1 with dissolve
+    show prince confused at scaling_center
+    oldman "Да ведь если путешественник станет врать, в учебниках географии все перепутается. И если он выпивает лишнее — тоже беда."
+
+    scene geographer office with dissolve
+    show prince speak at scaling_center
+    prince "А почему?"
+    oldman "Потому что у пьяниц двоится в глазах. И там, где на самом деле одна гора, географ отметит две."
+
+    scene drunkard planet3 with dissolve
+    show prince speak at scaling_center
+    prince "Я знал одного человека..."
+
+    scene desert morning5 with dissolve
+    show prince speak at scaling_center
+    prince "Из него вышел бы плохой путешественник."
+    oldman "Очень возможно."
+
+    scene planet mp5 with dissolve
+    show prince think at scaling_center
+    oldman "Так вот, если окажется, что путешественник — человек порядочный, тогда проверяют его открытие."
+    prince "Как проверяют?"
+
+    scene drunkard planet3 with dissolve
+    show prince think at scaling_center
+    prince "Идут и смотрят?"
+    oldman "Ну нет."
+
+    scene geographer office with dissolve
+    show prince confused at scaling_center
+    oldman "Это слишком сложно. Просто требуют, чтобы путешественник представил доказательства. Например, если он открыл большую гору, пускай принесет с нее большие камни."
+
+    scene busy man office with dissolve
+    show prince smile at scaling_center
+    "Географ вдруг разволновался:"
+    oldman "Но ты ведь и сам путешественник! Ты явился издалека!"
+
+    scene moon cosmos with dissolve
+    show prince think2 at scaling_center
+    oldman "Расскажи мне о своей планете!"
+    "И он раскрыл толстенную книгу и очинил карандаш."
+
+    scene star sky3 with dissolve
+    show prince smile at scaling_center
+    oldman "Рассказы путешественников сначала записывают карандашом. И только после того как путешественник представит доказательства, можно записать его рассказ чернилами."
+
+    scene moon cosmos with dissolve
+    show prince smile2 at scaling_center
+    oldman "Слушаю тебя."
+    prince "Ну, у меня там не так уж интересно. — У меня все очень маленькое."
+
+    scene star sky1 with dissolve
+    show prince speak at scaling_center
+    prince "Есть три вулкана. Два действуют, а один давно потух. Но мало ли что может случиться."
+
+    scene planet mp7 with dissolve
+    show prince think at scaling_center
+    oldman "Да, все может случиться."
+    prince "Потом, у меня есть цветок."
+    oldman "Цветы мы не отмечаем."
+
+    show prince speak at scaling_center
+    prince "Почему?!"
+
+    scene moon cosmos with dissolve
+    show prince speak at scaling_center
+    prince "Это ведь самое красивое!"
+    oldman "Потому, что цветы эфемерны."
+    prince "Как это — эфемерны?"
+
+    scene star sky1 with dissolve
+    show prince smile at scaling_center
+    oldman "Книги по географии — самые драгоценные книги на свете. Они никогда не устаревают."
+
+    scene moon cosmos with dissolve
+    show prince think at scaling_center
+    oldman "Ведь это очень редкий случай, чтобы гора сдвинулась с места. Или чтобы океан пересох. Мы пишем о вещах вечных и неизменных."
+
+    show prince speak at scaling_center
+    prince "Но потухший вулкан может проснуться. А что такое «эфемерный»?"
+
+    scene geographer office with dissolve
+    show prince think at scaling_center
+    oldman "Потух вулкан или действует — это для нас, географов, не имеет значения. Важно одно: гора."
+
+    scene lamp house5 with dissolve
+    show prince speak at scaling_center
+    oldman "Она не меняется."
+    prince "А что такое «эфемерный»?"
+    "— спросил Маленький принц, ведь раз задав вопрос, он не отступался, пока не получал ответа."
+
+    scene drunkard planet1 with dissolve
+    show prince sad2 at scaling_center
+    oldman "Это значит: тот, что должен скоро исчезнуть."
+    prince "И мой цветок должен скоро исчезнуть?"
+
+    scene moon cosmos with dissolve
+    show prince confused at scaling_center
+    oldman "Разумеется."
+    prince "«Моя краса и радость недолговечна, и ей нечем защищаться от мира: у нее только и есть что четыре шипа."
+
+    scene busy man office with dissolve
+    show prince sad at scaling_center
+    prince "А я бросил ее, и она осталась на моей планете совсем одна!»"
+    "Это впервые он пожалел о покинутом цветке."
+
+    scene moon cosmos with dissolve
+    show prince smile2 at scaling_center
+    "Но мужество тотчас вернулось к нему."
+    prince "Куда вы посоветуете мне отправиться?"
+
+    scene geographer office with dissolve
+    show prince smile at scaling_center
+    oldman "Посети планету Земля."
+
+    scene busy man office with dissolve
+    show prince think at scaling_center
+    oldman "У нее неплохая репутация..."
+
+    scene moon cosmos with dissolve
+    show prince think2 at scaling_center
+    "И Маленький принц пустился в путь, но мысли его были о покинутом цветке."
+
+    #jump chapter_16
 
     return
