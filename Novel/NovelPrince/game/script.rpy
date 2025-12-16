@@ -6,6 +6,7 @@ define e = Character('Эйлин', color="#c8ffc8", what_prefix="\"", what_suffi
 define narratorm = Character('Рассказчик', color="#D4B642", what_prefix="\"", what_suffix="\"")
 define prince = Character('Маленький Принц', color="#18AEDE", what_prefix="\"", what_suffix="\"")
 define rose = Character('Роза', color="#AB274F", what_prefix="\"", what_suffix="\"")
+define king = Character('Король', color='#e9e4af', what_prefix="\"", what_suffix="\"")
 define busyman = Character('Деловой человек', color="#19a70c", what_prefix="\"", what_suffix="\"")
 define lamper = Character('Фонарщик', color="#9b0fbe", what_prefix="\"", what_suffix="\"")
 define oldman = Character('Старик', color="#0c09c0", what_prefix="\"", what_suffix="\"")
@@ -20,7 +21,7 @@ define nvlnarrator = nvl_narrator
 # Игра начинается здесь:
 label start:
 
-    jump chapter_1
+    jump chapter_10
 
     return
 
@@ -859,9 +860,228 @@ label chapter_9:
 
     "Она не желала, чтобы Маленький Принц видел её слёзы. Она была очень гордым цветком…"
 
-    #jump chapter_10
-    jump chapter_12
+    jump chapter_10
 
+    return
+
+label chapter_10:
+
+    # Код new_plays, главa 10
+
+    # масштабирование спрайта для нормального полного отображения.
+    transform scaling_center:
+        zoom 0.7
+        yalign 1.0
+        xalign 0.5
+
+    nvl clear
+    scene planet mp2 with fade
+
+    narratorm "Ближе всего к планете Маленького принца оказались астероиды под номерами 325, 326, 327, 328, 329 и 330."
+
+    narratorm "Поэтому он и решил в первую очередь посетить их: надо же было найти себе дело, и может быть научиться чему-нибудь полезному."
+    show king idle at scaling_center
+    narratorm "На первом из астероидов жил Король."
+    narratorm "Облаченный в пурпурную тогу и горностаевую мантию, он восседал на своём троне – довольно простом при всём своём великолепии."
+
+    king 'А, вот и мой первый подданный!'
+    hide king idle
+    show prince think at scaling_center
+    '«Как же он мог меня узнать? Он ведь видит меня впервые!» - подумал Принц.'
+
+    'Он не знал, что короли смотрят на мир очень приземлённо: для них все люди подданные.'
+
+    show king idle at scaling_center
+    king 'Иди сюда! Я хочу увидеть тебя!'
+    hide king idle
+    show prince nostalgic at scaling_center
+    'Маленький Принц стал оглядываться – нельзя ли где-нибудь присесть, но роскошная горностаевая мантия накрыла всю планету.'
+    'Пришлось ему стоять, хотя он так устал… и тут он внезапно он зевнул'
+
+    show king idle at scaling_center
+    king 'Правила не позволяют зевать в присутствии короля,'
+    king 'Я запрещаю это тебе'
+    hide king idle
+    show prince speak at scaling_center
+    prince 'Я случайно зевнул!'
+    prince 'Я долго скитался и почти совсем не спал…'
+
+    show king idle at scaling_center
+    king 'Что ж, тогда я приказываю тебе зевать, сказал Король.'
+    king 'За все годы, что я здесь, я не видел никого, кто бы осмелился зевнуть. Но нет, это даже забавно.'
+    king 'Итак, давай зевай! Это мой приказ.'
+    hide king idle
+    show prince lonely at scaling_center
+    prince 'Но я робею… я больше не могу…'
+
+    show king idle at scaling_center
+    king 'Гм, гм… Тогда…'
+    king 'Тогда я повелеваю тебе то зевать, то…'
+
+    'Король замешкался и, кажется, даже стал немного серчать. Ведь для короля самое важное – чтобы ему все повиновались беспрекословно.'
+    'Неподчинения король не потерпит.'
+
+    king '…Если я прикажу своему генералу обратиться морской чайкой, и генерал не исполнит моего приказа, это будет не его вина, а моя!'
+    hide king idle
+    show prince lonely at scaling_center
+    prince 'Можно мне присесть?'
+
+    show king idle at scaling_center
+    king 'Повелеваю: сядь!'
+    hide king idle
+    show prince think at scaling_center
+    'Маленького Принца внезапно объяло недоумение. Планетка была в сущности такой крохотулей'
+    show king idle at scaling_center
+    'Чем же тут умудряется управлять этот всемогущий король?'
+    hide king idle
+    show prince speak at scaling_center
+    prince 'Ваше Величество, сир! Позвольте вас спросить…'
+
+    show king idle at scaling_center
+    king 'Мой приказ: вопрошай!'
+    hide king idle
+    show prince speak at scaling_center
+    prince 'Ваше Величество… Скажите.. Чем вы тут управляете?'
+
+    show king idle at scaling_center
+    king 'Всем на свете!'
+    hide king idle
+    show prince speak at scaling_center
+    prince 'Чем? Всем?'
+
+    show king idle at scaling_center
+    'Король поднял длань, скромно очертив свою планету, а также и прочие планеты, а потом и далёкие звёзды.'
+    hide king idle
+    show prince speak at scaling_center
+    prince 'И вы правите всем этим?'
+
+    show king idle at scaling_center
+    king 'Да'
+    hide king idle
+    show prince speak at scaling_center
+    prince 'И звёзды в вашей власти?'
+
+    show king idle at scaling_center
+    king 'Ну, разумеется!'
+    king 'Звёзды повинуются мне по мановению моей длани в первую очередь. Я не потерплю ни малейшего ослушания.'
+    hide king idle
+    show prince speak at scaling_center
+    'Маленький Принц восхитился. Такое могущество потрясло Маленького Принца.'
+    show prince nostalgic at scaling_center
+    'И так как он ощущал грусть воспоминаний о своей маленькой заброшенной планете, он решился испросить у короля милости:'
+
+    show prince smile2 at scaling_center
+    prince 'Ваше Величество! Я хотел бы увидеть закат… Сделайте мне одолжение… Прикажите Солнцу закатиться…'
+    hide prince smile2
+    show king idle at scaling_center
+    king 'Если бы я приказал генералу порхать с цветка на цветок, как бабочка, или написать трагедию, или превратиться в баклана,'
+    king 'и если бы генерал не выполнил полученного приказа, то кто, он или я, оказался бы неправ?'
+    hide king idle
+    show prince smile2 at scaling_center
+    prince 'Несомнено. вы!'
+    hide prince smile2
+    show king idle at scaling_center
+    king 'Точно!'
+    king 'Надо требовать от каждого лишь того, на что он способен!'
+    king 'Власть должна опираться прежде всего на разум.'
+    king 'Если ты прикажешь своему народу броситься в море, он совершит революцию. Я имею право требовать повиновения только потому, что мои приказы разумны.'
+    hide king idle
+    show prince speak at scaling_center
+    prince 'Значит, закат мой?'
+
+    show king idle at scaling_center
+    king 'Твой закат, и ты его получишь. Я потребую этого. Но я буду ждать в соответствие с наукой управления благоприятных условий.'
+    hide king idle
+    show prince speak at scaling_center
+    prince 'Когда это будет?'
+
+    show king idle at scaling_center
+    king 'Хм! Хм! Это будет, будет…'
+    king 'так…'
+    king 'это будет сегодня около семи сорока вечера! И ты увидишь, как хорошо меня слушаются!'
+    hide king idle
+    show prince nostalgic at scaling_center
+    'Маленький Принц зевнул. Он жалел о своём пропущенном закате. А потом ему стало даже немного скучно.'
+
+    show prince annoyed at scaling_center
+    prince 'Мне здесь больше делать нечего!'
+    prince 'Я ухожу!'
+
+    show king idle at scaling_center
+    king 'Не уходи!'
+
+    'Король не хотел терять своего единствнного и верного подданого.'
+
+    king 'Не уходи, я сделаю тебя министром!'
+    hide king idle
+    show prince think at scaling_center
+    prince 'Министр чего?'
+
+    show king idle at scaling_center
+    king 'Тэк-с… Тэк-с… Юриспруденции!'
+    hide king idle
+    show prince speak at scaling_center
+    prince 'Но тут некого судить!'
+
+    show king idle at scaling_center
+    king 'Мы этого не знаем!'
+    king 'Я ещё не вполне изучил своё королевство. Я очень стар, у меня нет места для кареты, и поэтому я устаю от хотьбы.'
+    hide king idle
+    show prince speak at scaling_center
+    prince 'О! Но я всё уже разглядел!'
+
+    'Маленький Принц наклонился, чтобы ещё раз взглянуть на другую сторону планеты.'
+
+    show prince think at scaling_center
+    prince 'Там тоже нет никого…'
+
+    show king idle at scaling_center
+    king 'Значит, ты сам будешь судить себя!'
+    king 'Это самое трудное. Судить себя гораздо труднее, чем других. Если тебе удастся правильно судить себя, значит, ты настоящий мудрец.'
+    hide king idle
+    show prince annoyed at scaling_center
+    prince 'Я могу судить себя, где угодно. Для этого не нужно жить здесь!'
+
+    show king idle at scaling_center
+    king 'Хм! Хм!'
+    king 'мне кажется, что на моей планете где-то живёт Старая Крыса. Я часто слышу её ночью.'
+    king 'Ты сможешь судить эту Старую Крысу. Время от времени ты будешь приговаривать её к смерти.'
+    king 'Так что её жизнь будет зависеть только от твоей справедливости.'
+    king 'Но ты каждый раз будешь миловать её, чтобы сэкономить. Ведь она здесь только одна.'
+    hide king idle
+    show prince speak at scaling_center
+    prince 'Я не люблю приговаривать к смерти, и мне кажется, что я ухожу.'
+
+    show king idle at scaling_center
+    king 'Нет!'
+    hide king idle
+    show prince think2 at scaling_center
+    'Но Маленький Принц, завершив свои приготовления, не захотел огорчать старого монарха'
+
+    show prince speak at scaling_center
+    prince 'Если бы Ваше Величество пожелало, чтобы мне повиновались пунктуально, оно могло бы отдать мне разумный приказ.'
+    show prince smile2 at scaling_center
+    prince 'Оно могло бы приказать мне, например, уйти раньше, чем через минуту. Мне кажется, что условия для этого созрели…'
+    hide prince smile2
+    show king idle at scaling_center
+    'Король ничего не ответил'
+    hide king idle
+    show prince fly
+    'Маленький Принц сначала колебался, а потом со вздохом удалился.'
+    hide prince fly
+    show king idle at scaling_center
+    'Но Король крикнул ему вслед:'
+
+    king 'Я делаю тебя своим посланником!'
+
+    'Выглядел он при этом очень внушительно'
+    hide king idle
+    show prince fly
+    prince '(Взрослые люди очень странные!)'
+
+
+    jump chapter_12
+    
     return
 
 label chapter_12:
