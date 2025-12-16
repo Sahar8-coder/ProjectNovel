@@ -9,6 +9,7 @@ define rose = Character('Роза', color="#AB274F", what_prefix="\"", what_suff
 define busyman = Character('Деловой человек', color="#19a70c", what_prefix="\"", what_suffix="\"")
 define lamper = Character('Фонарщик', color="#9b0fbe", what_prefix="\"", what_suffix="\"")
 define oldman = Character('Старик', color="#0c09c0", what_prefix="\"", what_suffix="\"")
+define drunkard = Character('Пьяница', color="#bb2aa8", what_prefix="\"", what_suffix="\"")
 
 define nvlnarrator = nvl_narrator
 
@@ -859,6 +860,58 @@ label chapter_9:
     "Она не желала, чтобы Маленький Принц видел её слёзы. Она была очень гордым цветком…"
 
     #jump chapter_10
+    jump chapter_12
+
+    return
+
+label chapter_12:
+    # код Makam
+    # Глава 12
+
+    # масштабирование спрайта для нормального полного отображения.
+    transform scaling_center:
+        zoom 0.7
+        yalign 1.0
+        xalign 0.5
+    
+    scene planet mp3 with fade
+    "На следующей планете жил пьяница."
+
+    scene busy man office with dissolve
+    show prince smile at scaling_center
+    "Маленький принц пробыл у него совсем недолго, но стало ему после этого очень невесело."
+    "Когда он явился на эту планету, пьяница молча сидел, уставясь на полчища бутылок — пустых и полных."
+    
+    scene geographer office with dissolve
+    show prince smile2 at scaling_center
+    prince "Что это ты делаешь?"
+    drunkard "Пью."
+
+    scene lamp house5 with dissolve
+    show prince speak at scaling_center
+    prince "Зачем?"
+    drunkard "Чтобы забыть."
+    prince "О чем забыть?"
+
+    scene geographer office with dissolve
+    show prince confused at scaling_center
+    "— спросил Маленький принц. Ему стало жаль пьяницу."
+
+    scene drunkard planet1 with dissolve
+    show prince speak at scaling_center
+    drunkard "Хочу забыть, что мне совестно."
+    prince "Отчего же тебе совестно?"
+
+    scene drunkard planet3 with dissolve
+    show prince confused at scaling_center
+    "— спросил Маленький принц. Ему очень хотелось помочь бедняге."
+
+    scene moon cosmos with dissolve
+    show prince think2 at scaling_center
+    drunkard "Совестно пить!"
+    "— объяснил пьяница, и больше от него нельзя было добиться ни слова."
+    "И Маленький принц отправился дальше, растерянный и недоумевающий."
+
     jump chapter_13
 
     return
