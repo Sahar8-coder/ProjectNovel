@@ -332,7 +332,7 @@ define gui.slider_borders = Borders(6, 6, 6, 6)
 
 ## Вертикальные границы.
 define gui.vbar_borders = Borders(6, 6, 6, 6)
-define gui.vscrollbar_borders = Borders(6, 6, 6, 6)
+define gui.vscrollbar_borders = Borders(-6, 6, -6, 6)
 define gui.vslider_borders = Borders(6, 6, 6, 6)
 
 ## What to do with unscrollable scrollbars in the game menu. "hide" hides them,
@@ -413,15 +413,15 @@ define gui.nvl_button_xpos = 675
 define gui.nvl_button_xalign = 0.0
 
 style slider_bar:
-    xysize (300, 6)
+    xysize (333, 34)
     background "#555"
 
 style slider_thumb:
-    xysize (24, 24)
+    xysize (14, 56)
     background "#FFF"
 
 style slider_left_bar:
-    background "#66CCFF"        # цвет активной части
+    background "#FFDFF7"        # цвет активной части
     xsize 200                   # можно менять
     ysize 8
 
