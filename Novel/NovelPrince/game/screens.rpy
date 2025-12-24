@@ -123,13 +123,15 @@ style vscrollbar:
 
 style slider:
     ysize gui.slider_size
-    base_bar Frame("gui/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
-    thumb "gui/slider/horizontal_[prefix_]thumb.png"
+    left_bar Frame("gui/slider/horizontal_left_bar.png", gui.slider_borders, tile=gui.slider_tile)
+    right_bar Frame("gui/slider/horizontal_right_bar.png", gui.slider_borders, tile=gui.slider_tile)
+    # thumb_align 0.5
+    thumb "gui/slider/horizontal_idle_thumb.png"
 
-style vslider:
-    xsize gui.slider_size
-    base_bar Frame("gui/slider/vertical_[prefix_]bar.png", gui.vslider_borders, tile=gui.slider_tile)
-    thumb "gui/slider/vertical_[prefix_]thumb.png"
+# style vslider:
+#     xsize gui.slider_size
+#     base_bar Frame("gui/slider/vertical_[prefix_]bar.png", gui.vslider_borders, tile=gui.slider_tile)
+#     thumb "gui/slider/vertical_[prefix_]thumb.png"
 
 
 style frame:
@@ -793,7 +795,7 @@ screen load():
 
 screen file_slots(title):
 
-    default page_name_value = FilePageNameInputValue(pattern=_("Выберите слот"), auto=_("Автосохранения"), quick=_("Быстрые сохранения"))
+    default page_name_value = FilePageNameInputValue(pattern=_("{} страница"), auto=_("Автосохранения"), quick=_("Быстрые сохранения"))
 
     use game_menu(title):
 
@@ -805,10 +807,16 @@ screen file_slots(title):
 
             ## Номер страницы, который может быть изменён посредством клика на
             ## кнопку.
-            text title:
-                style "page_label_text"
+            button:
+                style "page_label"
+
+                key_events True
                 xalign 0.5
-                yalign 0.1
+                action page_name_value.Toggle()
+
+                input:
+                    style "page_label_text"
+                    value page_name_value
 
             ## Таблица слотов.
             grid gui.file_slot_cols gui.file_slot_rows:
@@ -923,95 +931,86 @@ screen preferences():
     use game_menu(_("Настройки"), scroll="viewport"):
 
         vbox:
-            spacing 40
-            xalign 0.5
+            xpos 0.35
+            ypos 0.2
+            text ("Настройки") size 64 xalign 0.35
 
             hbox:
-                xfill True
-                spacing 200
-                ##box_wrap True
+                spacing 160
+                box_wrap True
 
                 if renpy.variant("pc") or renpy.variant("web"):
 
                     vbox:
-                        xalign 1.0
-                        spacing 10
-
                         style_prefix "radio"
-                        label _("Режим экрана")
+                        label _("{color=#FFDFF7}Режим экрана{/color}")
                         textbutton _("Оконный") action Preference("display", "window")
                         textbutton _("Полный") action Preference("display", "fullscreen")
 
                 vbox:
-                    xalign 0.0
-                    spacing 10
-
                     style_prefix "check"
-                    label _("Пропуск")
+                    label _("{color=#FFDFF7}Пропуск{/color}")
                     textbutton _("Всего текста") action Preference("skip", "toggle")
                     textbutton _("После выборов") action Preference("after choices", "toggle")
                     textbutton _("Переходов") action InvertSelected(Preference("transitions", "toggle"))
 
                 ## Дополнительные vbox'ы типа "radio_pref" или "check_pref"
                 ## могут быть добавлены сюда для добавления новых настроек.
-                # Отступ
+
             null height (4 * gui.pref_spacing)
 
             hbox:
-                spacing 200
-                xfill True
-
                 style_prefix "slider"
-                ##box_wrap True
+                xalign 0.5
 
                 vbox:
-                    xalign 1.0
-                    spacing 15
 
-                    label _("Скорость текста")
+                    label _("{color=#FFDFF7}Скорость{/color}")
 
-                    bar value Preference("text speed") style "slider"
+                    label _("Текста")
 
-                    label _("Скорость авточтения")
+                    bar value Preference("text speed")
 
-                    bar value Preference("auto-forward time") style "slider"
+                    label _("Авточтения")
+
+                    bar value Preference("auto-forward time")
 
                 vbox:
-                    xalign 0.0
-                    spacing 15
 
                     if config.has_music:
-                        label _("Громкость музыки")
+                        label _("{color=#FFDFF7}Громкость музыки{/color}")
+
+                        label _("Музыки")
 
                         hbox:
-                            bar value Preference("music volume") style "slider"
+                            bar value Preference("music volume")
 
                     if config.has_sound:
 
-                        label _("Громкость звуков")
+                        label _("Звуков")
 
                         hbox:
-                            bar value Preference("sound volume") style "slider"
+                            bar value Preference("sound volume")
 
                             if config.sample_sound:
                                 textbutton _("Тест") action Play("sound", config.sample_sound)
 
 
                     if config.has_voice:
-                        label _("Громкость голоса")
+                        label _("Голоса")
 
                         hbox:
-                            bar value Preference("voice volume") style "slider"
+                            bar value Preference("voice volume")
 
                             if config.sample_voice:
                                 textbutton _("Тест") action Play("voice", config.sample_voice)
 
-                    if config.has_music or config.has_sound or config.has_voice:
-                        null height gui.pref_spacing
-
-                        textbutton _("Без звука"):
-                            action Preference("all mute", "toggle")
-                            style "mute_all_button"
+                    # if config.has_music or config.has_sound or config.has_voice:
+                    #     null height gui.pref_spacing
+# 
+                    #     textbutton _("Без звука"):
+                    #         action Preference("all mute", "toggle")
+                    #         style "mute_all_button"
 
 
 style pref_label is gui_label
@@ -1071,7 +1070,7 @@ style check_button_text:
     properties gui.text_properties("check_button")
 
 style slider_slider:
-    xsize 525
+    xsize 333
 
 style slider_button:
     properties gui.button_properties("slider_button")
@@ -1082,7 +1081,7 @@ style slider_button_text:
     properties gui.text_properties("slider_button")
 
 style slider_vbox:
-    xsize 675
+    xsize 500
 
 
 ## Экран истории ###############################################################
@@ -1104,50 +1103,29 @@ screen history():
 
         style_prefix "history"
 
-        vbox:
-            spacing 20
-            xfill True
+        for h in _history_list:
 
-            # Заголовок
-            text "История диалогов":
-                size 80
-                xalign 0.5
-                yalign 0.5
+            window:
 
-            for h in _history_list:
+                ## Это всё правильно уравняет, если history_height будет
+                ## установлен на None.
+                has fixed:
+                    yfit True
 
-                window:
+                if h.who:
 
-                    ## Это всё правильно уравняет, если history_height будет
-                    ## установлен на None.
-                    has vbox:
-                        spacing 2
-
-                    ##has fixed:
-                    ##    yfit True
-
-                    if h.who:
-
-                        text h.who: ##Поменял label на text
-                            ##style "history_name"
-                            size 32
-                            bold True
-                            xalign 0.0 
-                            ##substitute False
-
-                            ## Берёт цвет из who параметра персонажа, если он
-                            ## установлен.
-                            if "color" in h.who_args:
-                                color h.who_args["color"]
-                            else:
-                                color "#ffffff"
-
-                    $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
-                    text what:
+                    label h.who:
+                        style "history_name"
                         substitute False
-                        size 26
-                        color gui.text_color                # стандартный
-                        xalign 0.0
+
+                        ## Берёт цвет из who параметра персонажа, если он
+                        ## установлен.
+                        if "color" in h.who_args:
+                            text_color h.who_args["color"]
+
+                $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
+                text what:
+                    substitute False
 
         if not _history_list:
             label _("История диалогов пуста.")

@@ -26,22 +26,22 @@ define config.check_conflicting_properties = True
 ## Цвета текста в интерфейсе.
 
 ## Акцентный цвет используется в заголовках и подчёркнутых текстах.
-define gui.accent_color = '#ffb6c1'
+define gui.accent_color = '#FFFFFF'
 
 ## Цвет, используемый в текстовой кнопке, когда она не выбрана и не наведена.
-define gui.idle_color = '#ffb6c1'
+define gui.idle_color = '#FFFFFF'
 
 ## Small_color используется в маленьком тексте, который должен быть ярче/
 ## темнее, для того, чтобы выделяться.
 define gui.idle_small_color = '#aaaaaa'
 
 ## Цвет, используемых в кнопках и панелях, когда они наведены.
-define gui.hover_color = '#b8681d'
+define gui.hover_color = '#FFDFF7'
 
 ## Цвет, используемый текстовой кнопкой, когда она выбрана, но не наведена.
 ## Кнопка может быть выбрана, если это текущий экран или текущее значение
 ## настройки.
-define gui.selected_color = '#ffffff'
+define gui.selected_color = '#FFDFF7'
 
 ## Цвет, используемый текстовой кнопкой, когда она не может быть выбрана.
 define gui.insensitive_color = '#8888887f'
@@ -78,6 +78,7 @@ define gui.interface_text_size = 45
 
 ## Размер заголовков в пользовательском интерфейсе.
 define gui.label_text_size = 36
+
 
 ## Размер текста на экране уведомлений.
 define gui.notify_text_size = 24
@@ -185,9 +186,9 @@ define gui.button_text_xalign = 0.0
 ##
 ## Эти настройки используются стандартным интерфейсом:
 
-define gui.radio_button_borders = Borders(27, 6, 6, 6)
+define gui.radio_button_borders = Borders(27, -10, 6, 10)
 
-define gui.check_button_borders = Borders(27, 6, 6, 6)
+define gui.check_button_borders = Borders(27, -10, 6, 10)
 
 define gui.confirm_button_text_xalign = 0.5
 
@@ -315,15 +316,15 @@ define gui.frame_tile = False
 
 ## Высота горизонтальных панелей, полос прокрутки и ползунков. Ширина
 ## вертикальных панелей, полос прокрутки и ползунков.
-define gui.bar_size = 38
-define gui.scrollbar_size = 18
+define gui.bar_size = 50
+define gui.scrollbar_size = 30
 define gui.slider_size = 38
 
 ## True, если изображения панелей должны моститься. False, если они должны быть
 ## линейно масштабированы.
 define gui.bar_tile = False
 define gui.scrollbar_tile = False
-define gui.slider_tile = False
+define gui.slider_tile = True
 
 ## Горизонтальные границы.
 define gui.bar_borders = Borders(6, 6, 6, 6)
@@ -332,7 +333,7 @@ define gui.slider_borders = Borders(6, 6, 6, 6)
 
 ## Вертикальные границы.
 define gui.vbar_borders = Borders(6, 6, 6, 6)
-define gui.vscrollbar_borders = Borders(-6, 6, -6, 6)
+define gui.vscrollbar_borders = Borders(6, 6, 6, 6)
 define gui.vslider_borders = Borders(6, 6, 6, 6)
 
 ## What to do with unscrollable scrollbars in the game menu. "hide" hides them,
@@ -349,22 +350,22 @@ define config.history_length = 250
 
 ## Высота доступных записей на экране истории, или None, чтобы задать высоту в
 ## зависимости от производительности.
-define gui.history_height = 210
+define gui.history_height = None
 
 ## Дополнительное пространство добавляемое между записями экрана истории.
-define gui.history_spacing = 0
+define gui.history_spacing = 40
 
 ## Местоположение, ширина и выравнивание заголовка, показывающего имя
 ## говорящего персонажа.
-define gui.history_name_xpos = 233
+define gui.history_name_xpos = 300
 define gui.history_name_ypos = 0
-define gui.history_name_width = 233
-define gui.history_name_xalign = 1.0
+define gui.history_name_width = 300
+define gui.history_name_xalign = 0.0
 
 ## Местоположение, ширина и выравнивание диалогового текста.
-define gui.history_text_xpos = 255
-define gui.history_text_ypos = 3
-define gui.history_text_width = 1110
+define gui.history_text_xpos = 300
+define gui.history_text_ypos = 60
+define gui.history_text_width = 1000
 define gui.history_text_xalign = 0.0
 
 
@@ -412,30 +413,30 @@ define gui.nvl_thought_xalign = 0.0
 define gui.nvl_button_xpos = 675
 define gui.nvl_button_xalign = 0.0
 
-style slider_bar:
-    xysize (333, 34)
-    background "#555"
-
-style slider_thumb:
-    xysize (14, 56)
-    background "#FFF"
-
-style slider_left_bar:
-    background "#FFDFF7"        # цвет активной части
-    xsize 200                   # можно менять
-    ysize 8
-
-# Неактивная часть (справа)
-style slider_right_bar:
-    background "#333333"        # цвет неактивной части
-    xsize 200
-    ysize 8
-
-# Бегунок (кружочек)
-style slider_thumb:
-    background "#FFFFFF"
-    xsize 20
-    ysize 20
+# style slider_bar:
+#     xysize (300, 6)
+#     background "#555"
+# 
+# style slider_thumb:
+#     xysize (24, 24)
+#     background "#FFF"
+# 
+# style slider_left_bar:
+#     background "#66CCFF"        # цвет активной части
+#     xsize 200                   # можно менять
+#     ysize 8
+# 
+# # Неактивная часть (справа)
+# style slider_right_bar:
+#     background "#333333"        # цвет неактивной части
+#     xsize 200
+#     ysize 8
+# 
+# # Бегунок (кружочек)
+# style slider_thumb:
+#     background "#FFFFFF"
+#     xsize 20
+#     ysize 20
 ## Локализация #################################################################
 
 ## Эта настройка контролирует доступ к разрыву линий. Стандартная настройка
